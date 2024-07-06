@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@XmlRootElement(name = "getPokemonResponse")
+@XmlRootElement(name = "getPokemonResponse", namespace = "http://example.com/pokemon")
 @XmlType(propOrder = {"count", "next", "previous", "results"})
 public class GetPokemonResponse {
     private int count;
@@ -19,23 +19,22 @@ public class GetPokemonResponse {
     private String previous;
     private List<Results> results = new ArrayList<>();
 
-    @XmlElement
-
+    @XmlElement(namespace = "http://example.com/pokemon")
     public int getCount() {
         return count;
     }
 
-    @XmlElement
+    @XmlElement(namespace = "http://example.com/pokemon")
     public String getNext() {
         return next;
     }
 
-    @XmlElement
+    @XmlElement(namespace = "http://example.com/pokemon")
     public String getPrevious() {
         return previous;
     }
 
-    @XmlElement
+    @XmlElement(namespace = "http://example.com/pokemon")
     public List<Results> getResults() {
         return results;
     }
@@ -47,12 +46,12 @@ public class GetPokemonResponse {
         private String name;
         private String url;
 
-        @XmlElement
+        @XmlElement(namespace = "http://example.com/pokemon")
         public String getName() {
             return name;
         }
 
-        @XmlElement
+        @XmlElement(namespace = "http://example.com/pokemon")
         public String getUrl() {
             return url;
         }

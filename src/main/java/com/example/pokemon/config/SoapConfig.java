@@ -1,16 +1,19 @@
 package com.example.pokemon.config;
 
+import com.example.pokemon.model.GetPokemonRequest;
+import com.example.pokemon.model.GetPokemonResponse;
+import com.example.pokemon.model.PokemonApiResponse;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.ApplicationContext;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
+import org.springframework.core.io.ClassPathResource;
 
 @EnableWs
 @Configuration
@@ -42,7 +45,11 @@ public class SoapConfig {
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setContextPath("com.example.pokemon.model");
+        marshaller.setClassesToBeBound(
+                GetPokemonRequest.class,
+                GetPokemonResponse.class,
+                PokemonApiResponse.class
+        );
         return marshaller;
     }
 }
