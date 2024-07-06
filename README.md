@@ -19,8 +19,8 @@ This project demonstrates a SOAP-based web service for retrieving Pokemon data u
 * Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/pokemon-soap-service.git
-cd pokemon-soap-service
+git clone https://github.com/Pyrosea98/pokemon.git
+cd pokemon
 ```
 
 * Build the project:
